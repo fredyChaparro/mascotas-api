@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import { connectDB } from './config/dbConnection.js';
 
+import viewsRouter from './routes/views.router.js';
 import usersRouter from './routes/users.router.js';
 import petsRouter from './routes/pets.router.js';
 import adoptionsRouter from './routes/adoption.router.js';
@@ -15,6 +16,7 @@ connectDB();
 app.use(express.json());
 app.use(cookieParser());
 
+app.use("/", viewsRouter);
 app.use('/api/users',usersRouter);
 app.use('/api/pets',petsRouter);
 app.use('/api/adoptions',adoptionsRouter);
